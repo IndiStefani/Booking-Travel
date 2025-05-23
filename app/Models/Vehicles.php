@@ -19,4 +19,9 @@ class Vehicles extends Model
         'capacity',
         'photo',
     ];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedules::class);
+    }
 }

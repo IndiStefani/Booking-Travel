@@ -1,4 +1,4 @@
-<x-layout bodyClass="g-sidenav-show  bg-gray-200 virtual-reality">
+<x-app-layout bodyClass="g-sidenav-show  bg-gray-200 virtual-reality">
 
     <div class="mt-n3">
         <!-- Navbar -->
@@ -184,4 +184,4 @@
     <x-footers.auth>
         </x-footer.auth>
         <x-plugins></x-plugins>
-</x-layout>
+</x-app-layout>

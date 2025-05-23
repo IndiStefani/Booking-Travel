@@ -1,4 +1,4 @@
-<x-layout bodyClass="bg-gray-200">
+<x-app-layout bodyClass="bg-gray-200">
 
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
@@ -84,7 +84,7 @@
     <script src="{{ asset('assets') }}/js/jquery.min.js"></script>
     <script>
         $(function() {
-    
+
         var text_val = $(".input-group input").val();
         if (text_val === "") {
           $(".input-group").removeClass('is-filled');
@@ -94,4 +94,4 @@
     });
     </script>
     @endpush
-</x-layout>
+</x-app-layout>

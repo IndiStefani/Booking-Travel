@@ -19,4 +19,9 @@ class TravelRoutes extends Model
         'distance',
         'estimated_time',
     ];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedules::class, 'travel_route_id');
+    }
 }

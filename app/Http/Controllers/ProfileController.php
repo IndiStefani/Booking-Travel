@@ -11,12 +11,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function viewProfile(): View
-    {
-        return view('profile.user-profile', [
-            'user' => Auth::user(),
-        ]);
-    }
     public function profile() {
         return view('pages.profile');
     }

@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'photo',
     ];
 
     /**
@@ -42,4 +44,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function passenger()
+    {
+        return $this->hasOne(Passenger::class);
+    }
+
+    public function driver()
+    {
+        return $this->hasOne(Drivers::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Bookings::class);
+    }
 }

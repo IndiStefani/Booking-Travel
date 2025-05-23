@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('phone_number');
-            $table->string('license_number')->unique();
-            $table->string('photo')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
@@ -27,9 +25,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('drivers', function (Blueprint $table) {
+        Schema::table('passengers', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('passengers');
     }
 };

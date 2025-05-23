@@ -20,12 +20,15 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
-        $driver = User::create([
-            'name' => 'Driver',
-            'email' => 'driver@example.com',
+        // Membuat beberapa user dengan role driver secara otomatis
+        for ($i = 1; $i <= 10; $i++) {
+            $driver = User::create([
+            'name' => 'Driver ' . $i,
+            'email' => 'driver' . $i . '@example.com',
             'password' => bcrypt('12345678'),
-        ]);
-        $driver->assignRole('driver');
+            ]);
+            $driver->assignRole('driver');
+        }
 
         $passenger = User::create([
             'name' => 'Passenger',

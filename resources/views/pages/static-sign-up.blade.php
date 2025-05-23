@@ -1,4 +1,4 @@
-<x-layout bodyClass="">
+<x-app-layout bodyClass="">
 
     <div>
         <div class="container position-sticky z-index-sticky top-0">
@@ -72,4 +72,4 @@
             </section>
         </main>
     </div>
-</x-layout>
+</x-app-layout>

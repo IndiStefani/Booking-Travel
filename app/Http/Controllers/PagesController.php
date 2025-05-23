@@ -20,9 +20,4 @@ class PagesController extends Controller
     {
         return view('pages.notifications');
     }
-
-    public function management()
-    {
-        return view('profile.user-management');
-    }
 }

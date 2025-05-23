@@ -19,6 +19,7 @@ class DriversSeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             DB::table('drivers')->insert([
+                'user_id' => $i + 1, // Asumsikan user_id sudah ada
                 'name' => $faker->name,
                 'phone_number' => $faker->phoneNumber,
                 'license_number' => strtoupper(Str::random(10)),

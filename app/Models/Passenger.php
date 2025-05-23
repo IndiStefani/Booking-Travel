@@ -5,28 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Drivers extends Model
+class Passenger extends Model
 {
     use HasFactory;
 
-    protected $table = 'drivers';
+    protected $table = 'passengers';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'user_id',
-        'name',
         'phone_number',
-        'license_number',
-        'photo',
+        'address',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function schedules()
-    {
-        return $this->hasMany(Schedules::class);
     }
 }
