@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [Controller::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/view', [ProfileController::class, 'viewProfile'])->name('profile.view');
@@ -36,4 +35,4 @@ Route::get('/pages/billing', [PagesController::class, 'billing'])->name('billing
 Route::get('/pages/notifications', [PagesController::class, 'notifications'])->name('notifications.view');
 Route::get('/pages/management', [PagesController::class, 'management'])->name('user-management.view');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
