@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -52,7 +51,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::with('passenger')->findOrFail($id);
+        $user = User::with(['passenger', 'driver'])->findOrFail($id);
 
         return view('pages.user.user-edit', compact('user'));
     }
@@ -80,13 +79,23 @@ class UserController extends Controller
                 $user->save();
             }
 
-            $user->passenger()->updateOrCreate(
-                ['user_id' => $user->id],
-                [
-                    'phone_number' => $request->phone_number,
-                    'address' => $request->address,
-                ]
-            );
+            if ($user->passenger) {
+                $user->passenger()->updateOrCreate(
+                    ['user_id' => $user->id],
+                    [
+                        'phone_number' => $request->phone_number,
+                        'address' => $request->address,
+                    ]
+                );
+            } elseif ($user->driver) {
+                $user->driver()->updateOrCreate(
+                    ['user_id' => $user->id],
+                    [
+                        'phone_number' => $request->phone_number,
+                        'license_number' => $request->license_number,
+                    ]
+                );
+            }
 
             return redirect()->back()->with('success', 'Profile updated successfully.')->withInput();
         } catch (\Exception $e) {

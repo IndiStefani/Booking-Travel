@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
             $table->string('phone_number');
             $table->string('license_number')->unique();
-            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -88,21 +88,34 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Phone</label>
-                                    <input type="number" name="phone_number" class="form-control border border-2 p-2"
-                                        value='{{ old('phone_number', optional($user->passenger)->phone_number) }}'>
+                                    <input type="text" name="phone_number" class="form-control border border-2 p-2"
+                                        value='{{ old('phone_number', optional($user->passenger)->phone_number ?? optional($user->driver)->phone_number) }}'>
                                     @error('phone_number')
                                         <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Address</label>
-                                    <input type="text" name="address" class="form-control border border-2 p-2"
-                                        value='{{ old('address', optional($user->passenger)->address) }}'>
-                                    @error('address')
-                                        <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
+                                @if ($user->passenger)
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" name="address" class="form-control border border-2 p-2"
+                                            value="{{ old('address', optional($user->passenger)->address) }}">
+                                        @error('address')
+                                            <p class="text-danger inputerror">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                @elseif ($user->driver)
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">License Number</label>
+                                        <input type="text" name="license_number"
+                                            class="form-control border border-2 p-2"
+                                            value="{{ old('license_number', optional($user->driver)->license_number) }}">
+                                        @error('license_number')
+                                            <p class="text-danger inputerror">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                @endif
+
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn bg-gradient-dark">Submit</button>

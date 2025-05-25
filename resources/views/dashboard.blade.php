@@ -14,8 +14,8 @@
                                 <i class="material-icons opacity-10">weekend</i>
                             </div>
                             <div class="text-end pt-1">
-                                <p class="text-sm mb-0 text-capitalize">Today's Booking</p>
-                                <h4 class="mb-0">{{ $totalBooking }}</h4>
+                                <p class="text-sm mb-0 text-capitalize">Today's Earn</p>
+                                <h4 class="mb-0">0</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">
@@ -37,8 +37,8 @@
                                 <i class="material-icons opacity-10">person</i>
                             </div>
                             <div class="text-end pt-1">
-                                <p class="text-sm mb-0 text-capitalize">Today's Passenger</p>
-                                <h4 class="mb-0">2,300</h4>
+                                <p class="text-sm mb-0 text-capitalize">Today's Booking</p>
+                                <h4 class="mb-0">{{ $totalBooking }}</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">
